@@ -1,18 +1,20 @@
 [
   {
-    "Image": "pending1",
+    "id": 1,
+    "image": "pending1",
     "name": "firstName1",
-    "age": "6",
-    "weight": "21",
+    "age": 6,
+    "weight": 21,
     "history": "mmm something about it",
-    "movies": "Home Alone",
+    "movies": "Home Alone"
   },
   {
-    "Image": "pending2",
+    "id": 2,
+    "image": "pending2",
     "name": "firstName2",
-    "age": "18",
-    "weight": "50",
+    "age": 18,
+    "weight": 50,
     "history": "mmm something more about it",
-    "movies": "Home Alone 2",
+    "movies": "Home Alone 2"
   }
 ]
