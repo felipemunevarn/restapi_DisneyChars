@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 
-const characters = require('../sample.json');
+const characters = require('../../sample.json');
 
 router.get('/', (req, res) => {
   res.json(characters);

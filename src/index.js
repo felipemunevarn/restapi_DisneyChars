@@ -1,20 +1,11 @@
-const express = require('express');
-const app = express();
-const morgan = require('morgan');
+const app = require('./config/server');
 
-// settings
-app.set('port', process.env.PORT || 3000);
-app.set('json spaces', 2);
-
-// middleware
-app.use(morgan('dev'));
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
+// require('./app/routes/characters')(app);
 
 // routes
-app.use(require('./routes/index'));
-app.use('/api/characters', require('./routes/characters'));
-app.use('/api/users', require('./routes/users'));
+app.use(require('./app/routes/index'));
+app.use('/api/characters', require('./app/routes/characters'));
+app.use('/api/users', require('./app/routes/users'));
 
 // starting the server
 app.listen(app.get('port'), () => {
