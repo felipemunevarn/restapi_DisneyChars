@@ -1,10 +1,16 @@
 const { Router } = require('express');
 const router = Router();
+const dbConnection = require('../../config/bdConnection');
 
 const characters = require('../../sample.json');
 
+const connection = dbConnection();
+
 router.get('/', (req, res) => {
-  res.json(characters);
+  connection.query('SELECT * FROM characters', (err, result) => {
+    console.log(result);
+    res.json(characters);
+  });
 });
 
 router.post('/', (req, res) => {

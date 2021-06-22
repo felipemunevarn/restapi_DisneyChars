@@ -1,7 +1,5 @@
 const app = require('./config/server');
 
-// require('./app/routes/characters')(app);
-
 // routes
 app.use(require('./app/routes/index'));
 app.use('/api/characters', require('./app/routes/characters'));
