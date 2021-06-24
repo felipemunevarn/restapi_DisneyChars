@@ -6,10 +6,13 @@ const characters = require('../../sample.json');
 
 const connection = dbConnection();
 
+const createCharacter = require('../../controllers/character.controller');
+router.post('/test', createCharacter);
+
 router.get('/', (req, res) => {
   connection.query('SELECT * FROM characters', (err, result) => {
-    console.log(result);
-    res.json(characters);
+    // console.log(createCharacter);
+    res.json(result);
   });
 });
 
