@@ -28,10 +28,33 @@ async function createCharacter(req, res) {
 async function getCharacters(req, res) {
   try {
     const characters = await Characters.findAll();
+    const imageNameChars = characters.map(char => {
+      return {
+        'image': char['dataValues']['image'],
+        'name': char['dataValues']['name']
+      }
+    });
     res.json({
-      data: characters
+      data: imageNameChars
     });
   } catch(e) {
+    console.log(e);
+  }
+}
+
+async function deleteOneCharacter(req, res) {
+  try {
+    const { id } = req.params;
+    const deleteRowCount = await Characters.destroy({
+      where: {
+        id_character: id
+      }
+    });
+    res.json({
+      message: 'Character deleted succesfully!',
+      count: deleteRowCount
+    });
+  } catch (e) {
     console.log(e);
   }
 }
@@ -39,9 +62,10 @@ async function getCharacters(req, res) {
 async function getOneCharacter(req, res) {
   try {
     const { id } = req.params;
+    console.log(id);
     const character = await Characters.findOne({
       where: {
-        id
+        id_character: id
       }
     });
     res.json(character);
@@ -53,3 +77,4 @@ async function getOneCharacter(req, res) {
 module.exports = createCharacter;
 module.exports = getCharacters;
 // module.exports = getOneCharacter;
+// module.exports = deleteOneCharacter;
