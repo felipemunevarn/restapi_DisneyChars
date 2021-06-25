@@ -21,7 +21,7 @@ const Movies = sequelize.define('movies', {
   gender: {
     type: Sequelize.INTEGER
   }
-})
+});
 
 // id_movies INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 // image VARCHAR(100),

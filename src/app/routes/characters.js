@@ -1,27 +1,20 @@
 const { Router } = require('express');
 const router = Router();
+
 const dbConnection = require('../../config/bdConnection');
+const connection = dbConnection();
 
 const characters = require('../../sample.json');
 
-const connection = dbConnection();
-
 const createCharacter = require('../../controllers/character.controller');
-router.post('/test', createCharacter);
+const getCharacters = require('../../controllers/character.controller');
+// const getOneCharacter = require('../../controllers/character.controller');
 
-router.get('/', (req, res) => {
-  connection.query('SELECT * FROM characters', (err, result) => {
-    // console.log(createCharacter);
-    res.json(result);
-  });
-});
+router.post('/', createCharacter);
+router.get('/', getCharacters);
+// router.get('/:id', getOneCharacter);
 
-router.post('/', (req, res) => {
-  const id = characters.length + 1;
-  const newCharacter = {...req.body, id}
-  characters.push(newCharacter);
-  res.json(characters)
-});
+
 
 router.put('/:id', (req, res) => {
   const { id } = req.params;
