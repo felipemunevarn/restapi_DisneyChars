@@ -62,7 +62,6 @@ async function deleteOneCharacter(req, res) {
 async function getOneCharacter(req, res) {
   try {
     const { id } = req.params;
-    console.log(id);
     const character = await Characters.findOne({
       where: {
         id_character: id
@@ -74,7 +73,39 @@ async function getOneCharacter(req, res) {
   }
 }
 
-module.exports = createCharacter;
-module.exports = getCharacters;
-// module.exports = getOneCharacter;
-// module.exports = deleteOneCharacter;
+async function updateCharacter(req, res) {
+  try {
+    const { image, name, age, weight, history } = req.body;
+    console.log(name);
+    const { id } = req.params;
+    const characters = await Characters.findAll({
+      attributes: ['id_character', 'image', 'name', 'age', 'weight', 'history'],
+      where: {
+        id_character: id
+      }
+    });
+    if(characters.length > 0) {
+      characters.forEach(async character => {
+        await character.update({
+          image: image,
+          name: name,
+          age: age,
+          weight: weight,
+          history: history
+        });
+      });
+    }
+    return res.json({
+      message: 'Caharacter updated succesfully',
+      data: characters
+    });
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+exports.createCharacter = createCharacter;
+exports.getCharacters = getCharacters;
+exports.getOneCharacter = getOneCharacter;
+exports.deleteOneCharacter = deleteOneCharacter;
+exports.updateCharacter = updateCharacter;
