@@ -21,15 +21,8 @@ const Movies = sequelize.define('movies', {
   gender: {
     type: Sequelize.INTEGER
   }
+}, {
+  timestamps: false
 });
-
-// id_movies INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-// image VARCHAR(100),
-// title VARCHAR(50),
-// year INT,
-// ranking FLOAT,
-// gender INT,
-//
-// FOREIGN KEY (gender) REFERENCES genders(id_gender)
 
 export default Movies;

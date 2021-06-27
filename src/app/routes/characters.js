@@ -1,11 +1,6 @@
 const { Router } = require('express');
 const router = Router();
 
-const dbConnection = require('../../config/bdConnection');
-const connection = dbConnection();
-
-const characters = require('../../sample.json');
-
 const {
   createCharacter,
   getCharacters,

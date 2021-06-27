@@ -40,3 +40,9 @@ CREATE TABLE characters_in_movies(
   FOREIGN KEY (movies) REFERENCES movies(id_movies),
   PRIMARY KEY (characters, movies)
 );
+
+CREATE TABLE users(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(100),
+  password VARCHAR(100)
+);

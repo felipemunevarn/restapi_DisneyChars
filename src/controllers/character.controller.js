@@ -27,15 +27,11 @@ async function createCharacter(req, res) {
 
 async function getCharacters(req, res) {
   try {
-    const characters = await Characters.findAll();
-    const imageNameChars = characters.map(char => {
-      return {
-        'image': char['dataValues']['image'],
-        'name': char['dataValues']['name']
-      }
+    const characters = await Characters.findAll({
+      attributes: ['image', 'name']
     });
     res.json({
-      data: imageNameChars
+      data: characters
     });
   } catch(e) {
     console.log(e);

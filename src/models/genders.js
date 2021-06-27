@@ -14,6 +14,8 @@ const Genders = sequelize.define('genders', {
   image: {
     type: Sequelize.TEXT
   }
+}, {
+  timestamps: false
 });
 
 Genders.hasMany(Movies, { foreignKey: 'gender', sourceKey: 'id_gender' });
