@@ -1,6 +1,6 @@
 const Users = require('../models/users');
 const bcryptjs = require('bcryptjs');
-const jst = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 function signUp(req, res) {
   bcryptjs.genSalt(10, (err, salt) => {
@@ -27,7 +27,7 @@ function signUp(req, res) {
 }
 
 function login(req, res) {
-  User.findOne({
+  Users.findOne({
     where: {
       email: req.body.email
     }
@@ -41,7 +41,7 @@ function login(req, res) {
           if(result){
             const token = jwt.sign({
               email: user.email,
-              userId: iser.id
+              userId: user.id
             }, 'secret', function(err, token){
               res.status(200).json({
                 message: 'Authentication succesfully',
@@ -60,4 +60,7 @@ function login(req, res) {
   )
 }
 
-exports.signUp = signUp;
+module.exports = {
+    signUp: signUp,
+    login: login
+}

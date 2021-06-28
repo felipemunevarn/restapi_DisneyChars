@@ -100,8 +100,10 @@ async function updateCharacter(req, res) {
   }
 }
 
-exports.createCharacter = createCharacter;
-exports.getCharacters = getCharacters;
-exports.getOneCharacter = getOneCharacter;
-exports.deleteOneCharacter = deleteOneCharacter;
-exports.updateCharacter = updateCharacter;
+module.exports = {
+  createCharacter: createCharacter,
+  getCharacters: getCharacters,
+  getOneCharacter: getOneCharacter,
+  deleteOneCharacter: deleteOneCharacter,
+  updateCharacter: updateCharacter
+}
