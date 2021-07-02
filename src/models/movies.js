@@ -1,5 +1,5 @@
-import Sequelize from 'sequelize';
-import { sequelize } from '../database/database';
+const Sequelize = require('sequelize');
+const sequelize = require('../database/database');
 
 const Movies = sequelize.define('movies', {
   id_movies: {
@@ -25,4 +25,4 @@ const Movies = sequelize.define('movies', {
   timestamps: false
 });
 
-export default Movies;
+module.exports = Movies;

@@ -36,7 +36,6 @@ async function getCharacters(req, res) {
       });
     } else {
       const key = Object.keys(req.query)[0];
-      console.log(key, req.query[key]);
       const character = await Characters.findOne({
         where: {
         [key]: req.query[key]
@@ -85,7 +84,6 @@ async function getOneCharacter(req, res) {
 async function updateCharacter(req, res) {
   try {
     const { image, name, age, weight, history } = req.body;
-    console.log(name);
     const { id } = req.params;
     const characters = await Characters.findAll({
       attributes: ['id_character', 'image', 'name', 'age', 'weight', 'history'],

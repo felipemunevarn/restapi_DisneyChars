@@ -2,6 +2,7 @@ const app = require('./config/server');
 
 // routes
 app.use('/api/characters', require('./app/routes/characters'));
+app.use('/api/movies', require('./app/routes/movies'));
 app.use('/auth/', require('./app/routes/users'));
 
 // starting the server
