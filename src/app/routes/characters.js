@@ -6,12 +6,12 @@ const {
   getCharacters,
   getOneCharacter,
   deleteOneCharacter,
-  updateCharacter
+  updateCharacter,
 } = require('../../controllers/character.controller');
 
-router.post('/', createCharacter);
 router.get('/', getCharacters);
 router.get('/:id', getOneCharacter);
+router.post('/', createCharacter);
 router.delete('/:id', deleteOneCharacter);
 router.put('/:id', updateCharacter);
 

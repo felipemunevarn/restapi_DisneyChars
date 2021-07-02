@@ -27,12 +27,25 @@ async function createCharacter(req, res) {
 
 async function getCharacters(req, res) {
   try {
-    const characters = await Characters.findAll({
-      attributes: ['image', 'name']
-    });
-    res.json({
-      data: characters
-    });
+    if (Object.keys(req.query).length === 0){
+      const characters = await Characters.findAll({
+        attributes: ['image', 'name']
+      });
+      res.json({
+        data: characters
+      });
+    } else {
+      const key = Object.keys(req.query)[0];
+      console.log(key, req.query[key]);
+      const character = await Characters.findOne({
+        where: {
+        [key]: req.query[key]
+        }
+      });
+      res.json({
+        data: character
+      });
+    }
   } catch(e) {
     console.log(e);
   }
