@@ -72,7 +72,7 @@ async function getOneMovie(req, res) {
     const { id } = req.params;
     const movie = await Movies.findOne({
       where: {
-        id_movie: id
+        id_movies: id
       }
     });
     res.json(movie);
@@ -86,9 +86,9 @@ async function updateMovie(req, res) {
     const { image, title, year, ranking, gender } = req.body;
     const { id } = req.params;
     const movies = await Movies.findAll({
-      attributes: ['id_movie', 'image', 'title', 'year', 'ranking', 'gender'],
+      attributes: ['id_movies', 'image', 'title', 'year', 'ranking', 'gender'],
       where: {
-        id_movie: id
+        id_movies: id
       }
     });
     if(movies.length > 0) {
